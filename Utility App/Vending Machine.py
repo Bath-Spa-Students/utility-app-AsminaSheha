@@ -43,6 +43,7 @@ items = {
 }
 
 
+#Display the list of available items grouped by category.
 def display_list():
     categories = ['Chocolates', 'Drinks', 'Soft Drinks', 'Chips', 'Other Snacks']
     for category in categories:
@@ -54,10 +55,12 @@ def display_list():
                       f" | Stock: {item_stocks[code]}")
 
 
+#Validate if the entered item code is valid.
 def validate_selection(selection):
     return selection in items
 
 
+#Process the purchase of a selected item.
 def process_purchase(selection):
     global cash
     global item_stocks
@@ -80,13 +83,14 @@ def process_purchase(selection):
     else:
         print("\nThis is not a valid item code.")
 
-
+#Get a random recommendation for an item from the same category.
 def get_recommendation(selection):
     category = items[selection]['Category']
     other_items = [code for code, item_info in items.items() if item_info['Category'] == category and code != selection]
     return random.choice(other_items)
 
 
+#Main purchasing Process
 def purchasing_process():
     global cash
     global item_stocks
@@ -117,4 +121,5 @@ def purchasing_process():
             print("Thank you for buying from Asmina's Vending Machine!")
 
 
+#Main function
 purchasing_process()
